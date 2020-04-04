@@ -2,7 +2,7 @@
 
 A Python script for extracing article content from an HTML document
 
-The script reads from stdin and prints the contents of the page's first <article> tag (plus the article tag itself) to stdout.
+The script reads from stdin and prints the contents of the page's first <\article> tag (plus the article tag itself) to stdout.
 
 I wrote this for use with newsboat and lynx, to remove annoying header and footer markup from articles. I have the following in my newsboat config: `browser "curl -L %u | ctc | lynx -stdin"`
 
