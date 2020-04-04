@@ -1,0 +1,42 @@
+import sys
+from HTMLParser import HTMLParser
+
+class ArticleFinder(HTMLParser):
+    recording = False
+    content = ""
+
+    def handle_starttag(self, tag, attrs):
+        if self.recording:
+            self.content += self.get_starttag_text()
+        elif tag == 'article':
+            self.recording = True
+            self.content += self.get_starttag_text()
+
+    def handle_endtag(self, tag):
+        if tag == 'article':
+            self.recording = False
+            self.content += '</article>'
+        elif self.recording:
+            self.content += '</' + tag + '>'
+
+    def handle_data(self, data):
+        if self.recording:
+            self.content += data
+
+    def get_content(self):
+        return self.content
+
+def to_one_string(lines):
+    accumulator = ''
+    for line in lines:
+        accumulator += line
+
+    return accumulator
+
+
+stdin = to_one_string(sys.stdin)
+
+parser = ArticleFinder()
+output = parser.feed(stdin)
+
+print parser.get_content()
