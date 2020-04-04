@@ -13,4 +13,4 @@ Make sure you have Python installed.
 1. Clone this repo: `git clone https://github.com/hadrianhughes/cut-the-crap.git`
 2. Navigate to wherever you cloned it to
 3. Run `./install.sh`. This will place the script in /usr/local/bin
-4. Run the script: `ctc`
+4. Test it's working: `curl https://raw.githubusercontent.com/hadrianhughes/cut-the-crap/master/example.html | ctc` This should return `<article>Article content which should be visible</article>`
