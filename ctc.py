@@ -37,6 +37,11 @@ def to_one_string(lines):
 stdin = to_one_string(sys.stdin)
 
 parser = ArticleFinder()
-output = parser.feed(stdin)
+parser.feed(stdin)
 
-print parser.get_content()
+output = parser.get_content()
+
+if len(output) > 0:
+    print(output)
+else:
+    print(stdin)
